@@ -1,0 +1,45 @@
+name: Build and Deploy
+on:
+    push:
+        branches: [main, master]
+    pull_request:
+        branches: [main, master]
+
+permissions:
+    contents: read
+    actions: read
+    checks: write
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+
+            - name: Install Dependencies
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: install
+
+            - name: Build
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: build
+
+            - name: Test
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: test
+
+            - name: Test Report
+              uses: dorny/test-reporter@v1
+              if: always()
+              with:
+                  name: Test Report
+                  path: '${{ github.workspace }}/*.xml'
+                  reporter: jest-junit
