@@ -63,7 +63,6 @@ export const Login = () => {
 	const submitLogin = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		dispatch(loginUser(login) as unknown as UnknownAction);
-		console.log(status);
 	};
 
 	const submitRegister = (e: React.FormEvent<HTMLFormElement>) => {
