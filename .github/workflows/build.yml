@@ -41,5 +41,5 @@ jobs:
               if: always()
               with:
                   name: Test Report
-                  path: '${{ github.workspace }}/**/*.xml'
-                  reporter: java-junit
+                  path: '${{ github.workspace }}/*.xml'
+                  reporter: jest-junit
