@@ -40,5 +40,5 @@ jobs:
               uses: dorny/test-reporter@v1
               with:
                   name: Test Report
-                  path: '${{ github.workspace }}/book-management-ui/**/*.xml'
+                  path: '${{ github.workspace }}/**/*.xml'
                   reporter: jest-junit
