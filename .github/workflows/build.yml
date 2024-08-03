@@ -40,5 +40,5 @@ jobs:
               uses: dorny/test-reporter@v1
               with:
                   name: Test Report
-                  path: *.xml
+                  path: /*.xml
                   reporter: jest-junit
